@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MQTTnet" Version="4.3.1.873" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="4.3.1.873" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+  </ItemGroup>
+
 </Project>

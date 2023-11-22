@@ -10,7 +10,7 @@ public class MatcherTests
     }
 
     [Fact]
-    public void MatcherIsMultiWildcard()
+    public void MatcherIsSingleWildcard()
     {
         List<string> list = [
             "Haus/Erdgeschoss/Kueche/Temperatur",
@@ -22,6 +22,24 @@ public class MatcherTests
             var result = Matcher.Match(item, "Haus/Erdgeschoss/+/Temperatur", out var wildcards);
             Assert.True(result);
             Assert.Single(wildcards);
+        }
+    }
+
+    [Fact]
+    public void MatcherIsMultiWildcard()
+    {
+        List<string> list = [
+            "Haus/Erdgeschoss/Kueche/Temperatur",
+            "Haus/Erdgeschoss/Kueche/Luftfeuchte",
+            "Haus/Erdgeschoss/Stauraum/Temperatur",
+            "Haus/Erdgeschoss/Stauraum/Licht",
+            "Haus/Erdgeschoss/Terrasse/Temperatur"];
+
+        foreach (var item in list)
+        {
+            var result = Matcher.Match(item, "Haus/Erdgeschoss/#", out var wildcards);
+            Assert.True(result);
+            Assert.Equal(2, wildcards.Count);
         }
     }
 }

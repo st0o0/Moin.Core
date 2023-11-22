@@ -3,9 +3,9 @@
 public readonly struct Segment(string segment) : IEquatable<Segment?>
 {
     public string Content { get; } = segment;
-    public bool IsSingleWildcard => Content.StartsWith('+') && Content.EndsWith('+');
-    public bool IsMultiWildcard => Content.StartsWith('#') && Content.EndsWith('#');
-    public bool IsSYS => Content.StartsWith('$');
+    public bool IsSingleWildcard => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('+') && Content.EndsWith('+');
+    public bool IsMultiWildcard => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('#') && Content.EndsWith('#');
+    public bool IsSYS => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('$');
 
     public bool Equals(Segment? other) => Content == other?.Content;
     public static bool operator ==(Segment left, Segment right) => left.Equals(right);
