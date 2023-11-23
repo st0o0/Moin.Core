@@ -157,9 +157,9 @@ stages:
                 action: create
                 target: $(Build.SourceVersion)
                 tagSource: manual
-                tag: v$(GitVersion.NuGetVersion)
-                tagPattern: v$(GitVersion.NuGetVersion)
-                title: v$(GitVersion.NuGetVersion)
+                tag: $(GitVersion.NuGetVersion)
+                tagPattern: $(GitVersion.NuGetVersion)
+                title: $(GitVersion.NuGetVersion)
                 githubConnection: githubRelease
                 repositoryName: $(Build.Repository.Name)
                 isPreRelease: false
