@@ -11,7 +11,7 @@
     <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="4.3.1.873" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
   </ItemGroup>
-<PropertyGroup>
+  <PropertyGroup>
         <VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
         <VSTestResultsDirectory>$(MSBuildThisFileDirectory)/TestResults/$(TargetFramework)</VSTestResultsDirectory>
         <Title>FicktEuchAllee.Core</Title>
@@ -29,6 +29,6 @@
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <DocumentationFile>$(ProjectDir)..\..\docs\SandCastleDocuments.xml</DocumentationFile>
         <AssemblyName>FicktEuchAllee.Core</AssemblyName>
-    </PropertyGroup>
+  </PropertyGroup>
 
 </Project>
