@@ -1,5 +1,4 @@
 trigger:
-
   batch: true
   branches:
     include:
@@ -123,31 +122,44 @@ stages:
           runOnce:
             deploy:
               steps:
-                - checkout: none
+                - checkout: self
+                  fetchDepth: 0
+                  persistCredentials: true
                 - download: current
                   artifact: packages
+
                 - task: UseDotNet@2
                   displayName: Install .NET sdk
                   inputs:
                     packageType: sdk
                     version: $(netSdkVersion)
 
+                - task: gitversion/setup@0
+                  displayName: "Setup git version"
+                  inputs:
+                    versionSpec: "5.x"
+
+                - task: gitversion/execute@0
+                  displayName: "Calculate git version"
+                  inputs:
+                    additionalArguments: "/updateprojectfiles"
+
                 - task: NuGetCommand@2
                   displayName: Push CI Packages To Orga Feed
                   inputs:
-                    command: 'push'
-                    packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
-                    nuGetFeedType: 'internal'
-                    publishVstsFeed: 'c2a16160-5202-4f1d-ad8a-748a4abdd62a/fa7f6790-d978-45cc-8c75-8d028d5d602f'
+                    command: "push"
+                    packagesToPush: "$(Pipeline.Workspace)/packages/*.*upkg"
+                    nuGetFeedType: "internal"
+                    publishVstsFeed: "c2a16160-5202-4f1d-ad8a-748a4abdd62a/fa7f6790-d978-45cc-8c75-8d028d5d602f"
                     allowPackageConflicts: true
 
                 - task: NuGetCommand@2
                   displayName: Push CI Packages To Nuget
                   inputs:
-                    command: 'push'
-                    packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
-                    nuGetFeedType: 'external'
-                    publishFeedCredentials: 'nuget'
+                    command: "push"
+                    packagesToPush: "$(Pipeline.Workspace)/packages/*.*upkg"
+                    nuGetFeedType: "external"
+                    publishFeedCredentials: "nuget"
 
                 - task: GitHubRelease@0
                   displayName: Create Github Release
@@ -162,4 +174,4 @@ stages:
                     repositoryName: $(Build.Repository.Name)
                     isPreRelease: false
                     addChangeLog: true
-                    assets: $(Build.ArtifactStagingDirectory)/packages/*
+                    assets: "$(Pipeline.Workspace)/packages/*.*upkg"
