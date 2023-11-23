@@ -150,12 +150,12 @@ stages:
                 allowPackageConflicts: true
 
             - task: NuGetCommand@2
-              displayName: Publish CI package to Nuget
+              displayName: Push CI package to Nuget
               inputs:
                 command: 'push'
-                packagesToPush: $(Pipeline.Workspace)/packages/*.*upkg
+                packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
                 nuGetFeedType: 'external'
-                publishFeedCredentials: 'Nuget.org'
+                publishFeedCredentials: 'Nuget.Org'
           
             - task: GitHubRelease@0
               displayName: Create Github Release
