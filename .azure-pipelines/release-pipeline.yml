@@ -132,7 +132,12 @@ stages:
                 version: $(netSdkVersion)
               
             - task: NuGetAuthenticate@1
+              displayName: 'CI Authenticate'
+            
+            - task: NuGetAuthenticate@1
               displayName: 'NuGet Authenticate'
+              inputs:
+                nuGetServiceConnections: 'Nuget.Org'
 
             - task: NuGetCommand@2
               displayName: Publish CI package to Azure artifacts
@@ -143,6 +148,7 @@ stages:
                 vstsFeed: $(internalFeedName)
                 publishVstsFeed: $(internalFeedName)
                 allowPackageConflicts: true
+
             - task: NuGetCommand@2
               displayName: Publish CI package to Nuget
               inputs:
