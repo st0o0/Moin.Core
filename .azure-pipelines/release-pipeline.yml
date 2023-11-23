@@ -132,22 +132,27 @@ stages:
                     packageType: sdk
                     version: $(netSdkVersion)
 
-                - task: DotNetCoreCLI@2
+                - task: NuGetAuthenticate@1
+                  displayName: Authenticate Nuget
+                  inputs:
+                    nuGetServiceConnections: 'nuget'
+
+                - task: NuGetCommand@2
                   displayName: Push CI Packages To Orga Feed
                   inputs:
                     command: 'push'
                     packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
                     nuGetFeedType: 'internal'
                     publishVstsFeed: 'c2a16160-5202-4f1d-ad8a-748a4abdd62a/fa7f6790-d978-45cc-8c75-8d028d5d602f'
-                    arguments: --skip-duplicate
+                    allowPackageConflicts: true'
 
-                - task: DotNetCoreCLI@2
+                - task: NuGetCommand@2
                   displayName: Push CI Packages To Nuget
                   inputs:
                     command: 'push'
                     packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
                     nuGetFeedType: 'external'
-                    publishFeedCredentials: 'nuget'
+                    publishFeedCredentials: 'nuget''
 
                 - task: GitHubRelease@0
                   displayName: Create Github Release
