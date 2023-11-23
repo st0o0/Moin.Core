@@ -152,7 +152,7 @@ stages:
                     command: 'push'
                     packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
                     nuGetFeedType: 'external'
-                    publishFeedCredentials: 'nuget''
+                    publishFeedCredentials: 'nuget'
 
                 - task: GitHubRelease@0
                   displayName: Create Github Release
