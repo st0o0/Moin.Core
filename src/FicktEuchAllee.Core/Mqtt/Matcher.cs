@@ -25,9 +25,10 @@ public static class Matcher
         }
 
         var isMultiWildcard = false;
-        foreach (var item in mergeSegments)
+        for (var i = 0; i < mergeSegments.Count; i++)
         {
-            (Segment? ATS, Segment? TS) = item;
+            var item = mergeSegments[i];
+            (var ATS, var TS) = item;
 
             if (!ATS.Equals(TS)) // || mergeSegments.IndexOf >= topicLength
             {

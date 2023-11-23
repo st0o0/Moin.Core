@@ -9,37 +9,29 @@ public class MatcherTests
         Assert.True(result);
     }
 
-    [Fact]
-    public void MatcherIsSingleWildcard()
+    [Theory]
+    [InlineData("Haus/Erdgeschoss/Kueche/Temperatur", true, 1)]
+    [InlineData("Haus/Erdgeschoss/Stauraum/Temperatur", true, 1)]
+    [InlineData("Haus/Erdgeschoss/Terrasse/Temperatur", true, 1)]
+    [InlineData("kekw/kekw", false, 0)]
+    public void MatcherIsSingleWildcard(string value, bool expected, int expectedWildcards)
     {
-        List<string> list = [
-            "Haus/Erdgeschoss/Kueche/Temperatur",
-            "Haus/Erdgeschoss/Stauraum/Temperatur",
-            "Haus/Erdgeschoss/Terrasse/Temperatur"];
-
-        foreach (var item in list)
-        {
-            var result = Matcher.Match(item, "Haus/Erdgeschoss/+/Temperatur", out var wildcards);
-            Assert.True(result);
-            Assert.Single(wildcards);
-        }
+        var result = Matcher.Match(value, "Haus/Erdgeschoss/+/Temperatur", out var wildcards);
+        Assert.Equal(expected, result);
+        Assert.Equal(expectedWildcards, wildcards.Count);
     }
 
-    [Fact]
-    public void MatcherIsMultiWildcard()
+    [Theory]
+    [InlineData("Haus/Erdgeschoss/Kueche/Temperatur", true, 2)]
+    [InlineData("Haus/Erdgeschoss/Kueche/Luftfeuchte", true, 2)]
+    [InlineData("Haus/Erdgeschoss/Stauraum/Temperatur", true, 2)]
+    [InlineData("Haus/Erdgeschoss/Terrasse/Temperatur", true, 2)]
+    [InlineData("Haus/Erdgeschoss/Stauraum/Licht", true, 2)]
+    [InlineData("kekw/kekw", false, 0)]
+    public void MatcherIsMultiWildcard(string value, bool expected, int expectedWildcards)
     {
-        List<string> list = [
-            "Haus/Erdgeschoss/Kueche/Temperatur",
-            "Haus/Erdgeschoss/Kueche/Luftfeuchte",
-            "Haus/Erdgeschoss/Stauraum/Temperatur",
-            "Haus/Erdgeschoss/Stauraum/Licht",
-            "Haus/Erdgeschoss/Terrasse/Temperatur"];
-
-        foreach (var item in list)
-        {
-            var result = Matcher.Match(item, "Haus/Erdgeschoss/#", out var wildcards);
-            Assert.True(result);
-            Assert.Equal(2, wildcards.Count);
-        }
+        var result = Matcher.Match(value, "Haus/Erdgeschoss/#", out var wildcards);
+        Assert.Equal(expected, result);
+        Assert.Equal(expectedWildcards, wildcards.Count);
     }
 }

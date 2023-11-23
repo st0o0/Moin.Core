@@ -1,6 +1,10 @@
-﻿using MQTTnet;
+﻿using System.Text.Json;
+using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
+using MQTTnet.Formatter;
+using MQTTnet.Protocol;
+using MQTTnet.Server;
 using Serilog;
 
 namespace FicktEuchAllee.Core;
@@ -11,8 +15,11 @@ public class CustomMqttClient : ICustomMqttClient
     private readonly IManagedMqttClient _client;
     private readonly MqttSubscriptionHandler _handler;
     private readonly ILogger _logger = Log.Logger.ForContext<CustomMqttClient>();
-    public CustomMqttClient()
+
+    private readonly MqttConfiguration _conifg;
+    public CustomMqttClient(MqttConfiguration configuration)
     {
+        _conifg = configuration;
         _factory = new MqttFactory();
         _client = _factory.CreateManagedMqttClient();
 
@@ -39,9 +46,40 @@ public class CustomMqttClient : ICustomMqttClient
         _client.ApplicationMessageReceivedAsync += HandleApplicationMessageReceivedAsync;
     }
 
-    public Task Publish<TMessage>(TMessage message)
+    public async Task StartAsync()
     {
-        return Task.CompletedTask;
+        var clientOptions = _factory
+        .CreateClientOptionsBuilder()
+        .WithTcpServer(_conifg.Host, _conifg.Port)
+        .WithCredentials(_conifg.Username, _conifg.Password)
+        .WithClientId(Guid.NewGuid().ToString())
+        .WithProtocolVersion(MqttProtocolVersion.V500)
+        .Build();
+
+        var options = _factory
+        .CreateManagedMqttClientOptionsBuilder()
+        .WithPendingMessagesOverflowStrategy(MqttPendingMessagesOverflowStrategy.DropNewMessage)
+        .WithMaxPendingMessages(250)
+        .WithClientOptions(clientOptions)
+        .Build();
+
+        await _client.StartAsync(options);
+    }
+
+    public async Task StopAsync() => await _client.StopAsync();
+
+    public async Task Publish<TMessage>(string topic, TMessage message)
+    {
+        var payload = JsonSerializer.Serialize(message);
+
+        var applicationMessage = _factory
+        .CreateApplicationMessageBuilder()
+        .WithTopic(topic)
+        .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtLeastOnce)
+        .WithPayload(payload)
+        .Build();
+
+        await _client.EnqueueAsync(applicationMessage);
     }
 
     public void Subscribe<TMessage>(MqttTopicConfig<TMessage> config, MqttMessageProcessingHandler<TMessage> processingHandler) where TMessage : IMqttMessage
@@ -49,15 +87,15 @@ public class CustomMqttClient : ICustomMqttClient
         _handler.CreateSubscription<TMessage>(config.Topic, async (msg, wildcards) => await processingHandler.Invoke(wildcards, msg));
     }
 
-    private async Task<bool> Subscribe(string topic)
+    private bool Subscribe(string topic)
     {
         var mqttTopicFilter = _factory
         .CreateTopicFilterBuilder()
         .WithTopic(topic)
-        .WithAtMostOnceQoS()
+        .WithAtLeastOnceQoS()
         .Build();
 
-        await _client.SubscribeAsync(new[] { mqttTopicFilter });
+        Task.Run(async () => await _client.SubscribeAsync(new[] { mqttTopicFilter }).ConfigureAwait(false));
         return true;
     }
 

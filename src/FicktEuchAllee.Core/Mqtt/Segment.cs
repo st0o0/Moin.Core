@@ -1,15 +1,15 @@
 ﻿namespace FicktEuchAllee.Core;
 
-public readonly struct Segment(string segment) : IEquatable<Segment?>
+public struct Segment(string segment) : IEquatable<Segment>
 {
-    public string Content { get; } = segment;
-    public bool IsSingleWildcard => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('+') && Content.EndsWith('+');
-    public bool IsMultiWildcard => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('#') && Content.EndsWith('#');
-    public bool IsSYS => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('$');
+    public readonly string Content { get; } = segment;
+    public readonly bool IsSingleWildcard => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('+') && Content.EndsWith('+');
+    public readonly bool IsMultiWildcard => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('#') && Content.EndsWith('#');
+    public readonly bool IsSYS => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('$');
 
-    public bool Equals(Segment? other) => Content == other?.Content;
     public static bool operator ==(Segment left, Segment right) => left.Equals(right);
-    public static bool operator !=(Segment left, Segment right) => !(left == right);
-    public override bool Equals(object obj) => obj is Segment segment1 && Equals(segment1);
-    public override int GetHashCode() => Content.GetHashCode();
+    public static bool operator !=(Segment left, Segment right) => !left.Equals(right);
+    public readonly bool Equals(Segment other) => Content == other.Content;
+    public override readonly int GetHashCode() => Content.GetHashCode();
+    public override bool Equals(object obj) => obj is Segment value && Equals(value);
 }
