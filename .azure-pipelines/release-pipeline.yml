@@ -132,11 +132,6 @@ stages:
                     packageType: sdk
                     version: $(netSdkVersion)
 
-                - task: NuGetAuthenticate@1
-                  displayName: Authenticate Nuget
-                  inputs:
-                    nuGetServiceConnections: 'nuget'
-
                 - task: NuGetCommand@2
                   displayName: Push CI Packages To Orga Feed
                   inputs:
