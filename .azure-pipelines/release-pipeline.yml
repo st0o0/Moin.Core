@@ -147,7 +147,7 @@ stages:
               displayName: Publish CI package to Nuget
               inputs:
                 command: 'push'
-                packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+                packagesToPush: $(Pipeline.Workspace)/packages/*.*upkg
                 nuGetFeedType: 'external'
                 publishFeedCredentials: 'Nuget.org'
           
