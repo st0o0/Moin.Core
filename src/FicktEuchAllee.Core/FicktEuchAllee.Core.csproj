@@ -26,7 +26,6 @@
         <PackageTags>Moin</PackageTags>
         <PackAsTool>False</PackAsTool>
         <Company />
-        <PackageReadmeFile>README.md</PackageReadmeFile>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <DocumentationFile>$(ProjectDir)..\..\docs\SandCastleDocuments.xml</DocumentationFile>
         <AssemblyName>FicktEuchAllee.Core</AssemblyName>
