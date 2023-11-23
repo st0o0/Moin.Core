@@ -13,8 +13,6 @@ Figure it out. Don't really know it yet
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Master | [![Build Status](https://dev.azure.com/gwittr/FicktEuchAllee.Core/_apis/build/status%2FRELEASE-Pipeline?branchName=master)](https://dev.azure.com/gwittr/FicktEuchAllee.Core/_build/latest?definitionId=15&branchName=master) |
 | Dev    | [![Build Status](https://dev.azure.com/gwittr/FicktEuchAllee.Core/_apis/build/status%2FCI-Pipeline?branchName=dev)](https://dev.azure.com/gwittr/FicktEuchAllee.Core/_build/latest?definitionId=14&branchName=dev) |
-|        |                                                                                                                                                                                                                               |
-|        |
 
 ## Install FicktEuchAllee.Core via NuGet
 
