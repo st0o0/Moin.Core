@@ -1,4 +1,5 @@
 trigger:
+
   batch: true
   branches:
     include:
@@ -131,32 +132,20 @@ stages:
                     packageType: sdk
                     version: $(netSdkVersion)
 
-                - task: NuGetAuthenticate@1
-                  displayName: "CI Authenticate"
-
-                - task: NuGetCommand@2
-                  displayName: Publish CI package to Azure artifacts
+                - task: DotNetCoreCLI@2
                   inputs:
-                    command: "push"
-                    packagesToPush: $(Pipeline.Workspace)/packages/*.*upkg
-                    nuGetFeedType: "internal"
-                    vstsFeed: $(internalFeedName)
-                    publishVstsFeed: $(internalFeedName)
-                    allowPackageConflicts: true
+                    command: 'push'
+                    packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
+                    nuGetFeedType: 'internal'
+                    publishVstsFeed: 'c2a16160-5202-4f1d-ad8a-748a4abdd62a/fa7f6790-d978-45cc-8c75-8d028d5d602f'
 
-                - task: NuGetAuthenticate@1
-                  displayName: "NuGet Authenticate"
-                  inputs:
-                    forceReinstallCredentialProvider: true
-                    nuGetServiceConnections: "Nuget.Org"
 
-                - task: NuGetCommand@2
-                  displayName: Push CI package to Nuget
+                - task: DotNetCoreCLI@2
                   inputs:
-                    command: "push"
-                    packagesToPush: "$(Pipeline.Workspace)/packages/*.*upkg"
-                    nuGetFeedType: "external"
-                    publishFeedCredentials: "Nuget.Org"
+                    command: 'push'
+                    packagesToPush: '$(Pipeline.Workspace)/packages/*.*upkg'
+                    nuGetFeedType: 'external'
+                    publishFeedCredentials: 'nuget'
 
                 - task: GitHubRelease@0
                   displayName: Create Github Release
