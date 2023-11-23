@@ -144,6 +144,7 @@ stages:
                 publishVstsFeed: $(internalFeedName)
                 allowPackageConflicts: true
             - task: NuGetCommand@2
+              displayName: Publish CI package to Nuget
               inputs:
                 command: 'push'
                 packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
