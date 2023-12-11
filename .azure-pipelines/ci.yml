@@ -2,6 +2,7 @@ trigger:
   branches:
     exclude:
       - gh-pages
+      - master
   paths:
     exclude:
       - '.github'
@@ -11,9 +12,6 @@ trigger:
       - CONTRIBUTING.md
 
 pr:
-  branches:
-    include:
-      - dev
   autoCancel: true
   drafts: false
 
