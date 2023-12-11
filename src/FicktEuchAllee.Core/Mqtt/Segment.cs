@@ -1,6 +1,8 @@
 ﻿namespace FicktEuchAllee.Core;
 
-public struct Segment(string segment) : IEquatable<Segment>
+/// <summary>
+/// </summary>
+public readonly struct Segment(string segment) : IEquatable<Segment>
 {
     public readonly string Content { get; } = segment;
     public readonly bool IsSingleWildcard => !string.IsNullOrWhiteSpace(Content) && Content.StartsWith('+') && Content.EndsWith('+');

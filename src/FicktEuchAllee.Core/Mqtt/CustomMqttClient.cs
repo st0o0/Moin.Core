@@ -9,14 +9,18 @@ using Serilog;
 
 namespace FicktEuchAllee.Core;
 
+/// <summary>
+/// </summary>
 public class CustomMqttClient : ICustomMqttClient
 {
     private readonly MqttFactory _factory;
     private readonly IManagedMqttClient _client;
     private readonly MqttSubscriptionHandler _handler;
     private readonly ILogger _logger = Log.Logger.ForContext<CustomMqttClient>();
-
     private readonly MqttConfiguration _conifg;
+
+    /// <summary>
+    /// </summary>
     public CustomMqttClient(MqttConfiguration configuration)
     {
         _conifg = configuration;
@@ -46,6 +50,8 @@ public class CustomMqttClient : ICustomMqttClient
         _client.ApplicationMessageReceivedAsync += HandleApplicationMessageReceivedAsync;
     }
 
+    /// <summary>
+    /// </summary>
     public async Task StartAsync()
     {
         var clientOptions = _factory
@@ -66,8 +72,12 @@ public class CustomMqttClient : ICustomMqttClient
         await _client.StartAsync(options);
     }
 
+    /// <summary>
+    /// </summary>
     public async Task StopAsync() => await _client.StopAsync();
 
+    /// <summary>
+    /// </summary>
     public async Task Publish<TMessage>(string topic, TMessage message)
     {
         var payload = JsonSerializer.Serialize(message);
@@ -82,6 +92,8 @@ public class CustomMqttClient : ICustomMqttClient
         await _client.EnqueueAsync(applicationMessage);
     }
 
+    /// <summary>
+    /// </summary>
     public void Subscribe<TMessage>(MqttTopicConfig<TMessage> config, MqttMessageProcessingHandler<TMessage> processingHandler) where TMessage : IMqttMessage
     {
         _handler.CreateSubscription<TMessage>(config.Topic, async (msg, wildcards) => await processingHandler.Invoke(wildcards, msg));

@@ -4,5 +4,169 @@
         <name>FicktEuchAllee.Core</name>
     </assembly>
     <members>
+        <member name="T:FicktEuchAllee.Core.IEndpoint`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.IEndpoint`1.Name">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.IEndpoint`1.Role">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.IEndpoint`1.EndpointType">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.IEndpoint`1.Type">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.Endpoint`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Endpoint`1.#ctor(System.String,System.String,FicktEuchAllee.Core.EndpointType)">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.Endpoint`1.Type">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.EndpointBuilder">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.EndpointBuilder.Create``1(System.String,System.String,FicktEuchAllee.Core.EndpointType)">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.EndpointType">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:FicktEuchAllee.Core.EndpointType.Shard">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:FicktEuchAllee.Core.EndpointType.Singleton">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:FicktEuchAllee.Core.EndpointType.ClusterRouter">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:FicktEuchAllee.Core.EndpointType.BroadcastRouter">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.MessageExtractor">
+            <summary>
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MessageExtractor.#ctor(System.Int32)">
+            <summary>
+            </summary>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MessageExtractor.EntityId(System.Object)">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.CustomMqttClient">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.CustomMqttClient.#ctor(FicktEuchAllee.Core.MqttConfiguration)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.CustomMqttClient.StartAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.CustomMqttClient.StopAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.CustomMqttClient.Publish``1(System.String,``0)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.CustomMqttClient.Subscribe``1(FicktEuchAllee.Core.MqttTopicConfig{``0},FicktEuchAllee.Core.MqttMessageProcessingHandler{``0})">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.MqttMessageProcessingHandler`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.Subscribe">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.ICustomMqttClient">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.ICustomMqttClient.StartAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.ICustomMqttClient.StopAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.ICustomMqttClient.Publish``1(System.String,``0)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.ICustomMqttClient.Subscribe``1(FicktEuchAllee.Core.MqttTopicConfig{``0},FicktEuchAllee.Core.MqttMessageProcessingHandler{``0})">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.MqttTopicConfig`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttTopicConfig`1.#ctor(System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.MqttTopicConfig`1.Topic">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.Matcher">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:FicktEuchAllee.Core.Matcher.SegmentSeperator">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Matcher.Match(System.String,System.String,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Matcher.Match(System.Collections.Generic.List{FicktEuchAllee.Core.Segment},System.Collections.Generic.List{FicktEuchAllee.Core.Segment},System.Collections.Generic.List{System.String}@)">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.Segment">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Segment.#ctor(System.String)">
+            <summary>
+            </summary>
+        </member>
     </members>
 </doc>
