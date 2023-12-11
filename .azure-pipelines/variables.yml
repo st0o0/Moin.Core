@@ -1,6 +1,6 @@
 variables:
   - name: netSdkVersion
-    value: 8.0.x
+    value: 7.0.x
   - name: netIncludePreview
     value: false
   - name: buildConfiguration
