@@ -2,12 +2,20 @@
 
 internal record MergeSegment(Segment? ATS, Segment? TS);
 
+/// <summary>
+/// </summary>
 public static class Matcher
 {
+    /// <summary>
+    /// </summary>
     public const char SegmentSeperator = '/';
 
+    /// <summary>
+    /// </summary>
     public static bool Match(string topic, string allowedTopic, out List<string> wildcards) => Match(topic.ToSegments(), allowedTopic.ToSegments(), out wildcards);
 
+    /// <summary>
+    /// </summary>
     public static bool Match(List<Segment> topicSegments, List<Segment> allowedTopicSegments, out List<string> wildcards)
     {
         wildcards = [];
