@@ -1,4 +1,5 @@
 ﻿using Akka.Hosting.Coordination;
+using Akka.Persistence.Hosting;
 
 namespace FicktEuchAllee.Core;
 
@@ -21,6 +22,14 @@ public class ShardSettings : ISettings
     /// <summary>
     /// </summary>
     public TimeSpan? PassivateIdleEntityAfter { get; init; } = null!;
+
+    /// <summary>
+    /// </summary>
+    public JournalOptions? JournalOptions { get; init; } = null!;
+    
+    /// <summary>
+    /// </summary>
+    public SnapshotOptions? SnapshotOptions { get; init; } = null!;
 }
 
 /// <summary>
