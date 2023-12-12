@@ -72,7 +72,6 @@ public static class AkkaServiceCollectionExtensions
     /// <exception cref="NotImplementedException"></exception>
     public static AkkaConfigurationBuilder AddServiceEndpoint<TImplementation>(this AkkaConfigurationBuilder builder, IEndpoint endpoint, ISettings? settings = default, params object[] args) where TImplementation : ActorBase
     {
-
         return endpoint.EndpointType switch
         {
             EndpointType.Shard => builder.AddShardedService<TImplementation>(endpoint.Name, endpoint.Role, (settings as ShardSettings) ?? new ShardSettings(), args),
@@ -85,13 +84,15 @@ public static class AkkaServiceCollectionExtensions
     internal static AkkaConfigurationBuilder AddShardedService<TImplementation>(this AkkaConfigurationBuilder builder, string name, string role, ShardSettings settings, params object[] args) where TImplementation : ActorBase
     {
         builder.WithShardRegion<TImplementation>($"{role}-{name}",
-        (system, registry) => nttId => Props.Create<TImplementation>([nttId, args]),
+        (_, _, dependecyResolver) => entityId => dependecyResolver.Props<TImplementation>(entityId),
         new MessageExtractor(settings.MaxShards),
         new()
         {
             Role = role,
             ShouldPassivateIdleEntities = settings.ShouldPassivateIdleEntities,
-            PassivateIdleEntityAfter = settings.PassivateIdleEntityAfter
+            PassivateIdleEntityAfter = settings.PassivateIdleEntityAfter,
+            JournalOptions = settings.JournalOptions,
+            SnapshotOptions = settings.SnapshotOptions
         });
 
         return builder;
@@ -100,7 +101,7 @@ public static class AkkaServiceCollectionExtensions
     internal static AkkaConfigurationBuilder AddSingletonService<TImplementation>(this AkkaConfigurationBuilder builder, string name, string role, SingletonSettings settings, params object[] args) where TImplementation : ActorBase
     {
         builder.WithSingleton<TImplementation>(name,
-        Props.Create<TImplementation>(args),
+        (_, _, dependecyResolver) => dependecyResolver.Props<TImplementation>(),
         new ClusterSingletonOptions()
         {
             Role = role,
