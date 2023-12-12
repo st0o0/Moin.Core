@@ -27,7 +27,7 @@ public static class AkkaServiceCollectionExtensions
             EndpointType.Shard => builder.AddShardedClient(endpoint),
             EndpointType.Singleton => builder.AddSingletonClient(endpoint),
             EndpointType.ClusterRouter => builder.AddClusterRouterClient(endpoint),
-            EndpointType.BroadcastRouter => builder.AddClusterRouterClient(endpoint),
+            EndpointType.BroadcastRouter => builder.AddBroadcastRouterCluster(endpoint),
             _ => throw new NotImplementedException()
         };
     }
