@@ -1,4 +1,4 @@
-﻿namespace FicktEuchAllee.Core.Tests;
+﻿namespace Moin.Core.Tests;
 
 public class MatcherTests
 {

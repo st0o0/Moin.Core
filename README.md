@@ -11,8 +11,8 @@ Figure it out. Don't really know it yet
 
 | Branch  | Status                                                                                                                                                                                                                        |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Master | [![Build Status](https://dev.azure.com/nnc/Moin.Core/_apis/build/status%2FRELEASE-Pipeline?branchName=master)](https://dev.azure.com/nnc/Moin.Core/_build/latest?definitionId=15&branchName=master) |
-| Dev    | [![Build Status](https://dev.azure.com/nnc/Moin.Core/_apis/build/status%2FCI-Pipeline?branchName=dev)](https://dev.azure.com/nnc/Moin.Core/_build/latest?definitionId=14&branchName=dev) |
+| Master | [![Build Status](https://dev.azure.com/NoNeedConcept/Moin.Core/_apis/build/status%2FRELEASE-Pipeline?branchName=master)](https://dev.azure.com/NoNeedConcept/Moin.Core/_build/latest?definitionId=15&branchName=master) |
+| Dev    | [![Build Status](https://dev.azure.com/NoNeedConcept/Moin.Core/_apis/build/status%2FCI-Pipeline?branchName=dev)](https://dev.azure.com/NoNeedConcept/Moin.Core/_build/latest?definitionId=14&branchName=dev) |
 
 ## Install Moin.Core via NuGet
 

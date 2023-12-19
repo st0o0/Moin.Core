@@ -17,21 +17,21 @@
   <PropertyGroup>
         <VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
         <VSTestResultsDirectory>$(MSBuildThisFileDirectory)/TestResults/$(TargetFramework)</VSTestResultsDirectory>
-        <Title>FicktEuchAllee.Core</Title>
+        <Title>Moin.Core</Title>
         <Description>
             Moin!
         </Description>
         <Authors>st0o0</Authors>
         <Copyright>© | 2023 | st0o0 | Germany</Copyright>
-        <RepositoryUrl>https://github.com/st0o0/FicktEuchAllee.Core</RepositoryUrl>
+        <RepositoryUrl>https://github.com/st0o0/Moin.Core</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/st0o0/FicktEuchAllee.Core</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/st0o0/Moin.Core</PackageProjectUrl>
         <PackageTags>Moin</PackageTags>
         <PackAsTool>False</PackAsTool>
         <Company />
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <DocumentationFile>$(ProjectDir)..\..\docs\SandCastleDocuments.xml</DocumentationFile>
-        <AssemblyName>FicktEuchAllee.Core</AssemblyName>
+        <AssemblyName>Moin.Core</AssemblyName>
   </PropertyGroup>
 
 </Project>

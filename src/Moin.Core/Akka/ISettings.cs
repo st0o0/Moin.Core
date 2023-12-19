@@ -1,7 +1,7 @@
 ﻿using Akka.Hosting.Coordination;
 using Akka.Persistence.Hosting;
 
-namespace FicktEuchAllee.Core;
+namespace Moin.Core;
 
 /// <summary>
 /// </summary>

@@ -7,7 +7,7 @@ using MQTTnet.Protocol;
 using MQTTnet.Server;
 using Serilog;
 
-namespace FicktEuchAllee.Core;
+namespace Moin.Core;
 
 /// <summary>
 /// </summary>

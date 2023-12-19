@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FicktEuchAllee.Core\FicktEuchAllee.Core.csproj" />
     <ProjectReference Include="..\Moin.Core\Moin.Core.csproj" />
   </ItemGroup>
 
