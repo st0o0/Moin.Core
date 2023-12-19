@@ -8,8 +8,8 @@ variables:
   - name: vmImage
     value: ubuntu-latest
   - name: solutionPath
-    value: src/FicktEuchAllee.sln
+    value: src/Moin.sln
   - name: projectPath
-    value: src/FicktEuchAllee.Core/FicktEuchAllee.Core.csproj
+    value: src/Moin.Core/Moin.Core.csproj
   - name: internalFeedName
-    value: FicktEuchAllee.Core/FicktEuchAllee.Core
+    value: Moin.Core/Moin.Core
