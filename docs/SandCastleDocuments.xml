@@ -87,6 +87,14 @@
             <summary>
             </summary>
         </member>
+        <member name="T:FicktEuchAllee.Core.IEntityId">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.IEntityId.Id">
+            <summary>
+            </summary>
+        </member>
         <member name="T:FicktEuchAllee.Core.ISettings">
             <summary>
             </summary>
@@ -133,15 +141,15 @@
         </member>
         <member name="T:FicktEuchAllee.Core.MessageExtractor">
             <summary>
+            
             </summary>
-            <remarks>
-            </remarks>
+            <param name="maxShards"></param>
         </member>
         <member name="M:FicktEuchAllee.Core.MessageExtractor.#ctor(System.Int32)">
             <summary>
+            
             </summary>
-            <remarks>
-            </remarks>
+            <param name="maxShards"></param>
         </member>
         <member name="M:FicktEuchAllee.Core.MessageExtractor.EntityId(System.Object)">
             <summary>
