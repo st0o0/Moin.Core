@@ -275,5 +275,52 @@
             <summary>
             </summary>
         </member>
+        <member name="P:FicktEuchAllee.Core.Segment.Content">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.Segment.IsSingleWildcard">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.Segment.IsMultiWildcard">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.Segment.IsSYS">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Segment.op_Equality(FicktEuchAllee.Core.Segment,FicktEuchAllee.Core.Segment)">
+            <summary>
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Segment.op_Inequality(FicktEuchAllee.Core.Segment,FicktEuchAllee.Core.Segment)">
+            <summary>
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Segment.Equals(FicktEuchAllee.Core.Segment)">
+            <summary>
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Segment.GetHashCode">
+            <summary>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FicktEuchAllee.Core.Segment.Equals(System.Object)">
+            <summary>
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
