@@ -5,6 +5,7 @@ using Akka.Cluster.Routing;
 using Akka.Cluster.Sharding;
 using Akka.Cluster.Tools.Singleton;
 using Akka.DependencyInjection;
+using Akka.Dispatch.SysMsg;
 using Akka.Hosting;
 using Akka.Routing;
 
@@ -14,6 +15,8 @@ namespace FicktEuchAllee.Core;
 /// </summary>
 public static class AkkaServiceCollectionExtensions
 {
+    private static string CreateActorName(string name, string role) => $"{name}-{role}";
+
     /// <summary>
     /// </summary>
     /// <param name="builder"></param>
@@ -28,19 +31,19 @@ public static class AkkaServiceCollectionExtensions
             EndpointType.Singleton => builder.AddSingletonClient(endpoint),
             EndpointType.ClusterRouter => builder.AddClusterRouterClient(endpoint),
             EndpointType.BroadcastRouter => builder.AddBroadcastRouterCluster(endpoint),
-            _ => throw new NotImplementedException()
+            _ => throw new NotImplementedException("PECH....")
         };
     }
 
     internal static AkkaConfigurationBuilder AddShardedClient(this AkkaConfigurationBuilder builder, IEndpoint endpoint)
     {
-        InvokeGenericExtensionMethod(endpoint.Type, "WithShardRegionProxyWrap", [builder, $"{endpoint.Role}-{endpoint.Name}", endpoint.Role, new MessageExtractor(50)]);
+        InvokeGenericExtensionMethod(endpoint.Type, "WithShardRegionProxyWrap", [builder, endpoint.Name, endpoint.Role, new MessageExtractor(50)]);
         return builder;
     }
 
     internal static AkkaConfigurationBuilder AddSingletonClient(this AkkaConfigurationBuilder builder, IEndpoint endpoint)
     {
-        InvokeGenericExtensionMethod(endpoint.Type, "WithSingletonProxyWrap", [builder, $"{endpoint.Role}-{endpoint.Name}", endpoint.Role]);
+        InvokeGenericExtensionMethod(endpoint.Type, "WithSingletonProxyWrap", [builder, endpoint.Name, endpoint.Role]);
         return builder;
     }
 
@@ -48,7 +51,7 @@ public static class AkkaServiceCollectionExtensions
     {
         return builder.WithActors((system, registry) =>
         {
-            registry.TryRegister(endpoint.Type, system.CreateClusterRouter($"{endpoint.Role}-{endpoint.Name}", endpoint.Role));
+            registry.TryRegister(endpoint.Type, system.CreateClusterRouter(CreateActorName(endpoint.Name, endpoint.Role), endpoint.Role));
         });
     }
 
@@ -56,14 +59,13 @@ public static class AkkaServiceCollectionExtensions
     {
         return builder.WithActors((system, registry) =>
         {
-            registry.TryRegister(endpoint.Type, system.CreateBroadcastRouter($"{endpoint.Role}-{endpoint.Name}", endpoint.Role));
+            registry.TryRegister(endpoint.Type, system.CreateBroadcastRouter(CreateActorName(endpoint.Name, endpoint.Role), endpoint.Role));
         });
     }
 
     /// <summary>
     /// </summary>
     /// <typeparam name="TImplementation"></typeparam>
-    /// <typeparam name="T"></typeparam>
     /// <param name="builder"></param>
     /// <param name="endpoint"></param>
     /// <param name="settings"></param>
@@ -83,7 +85,7 @@ public static class AkkaServiceCollectionExtensions
 
     internal static AkkaConfigurationBuilder AddShardedService<TImplementation>(this AkkaConfigurationBuilder builder, string name, string role, ShardSettings settings, params object[] args) where TImplementation : ActorBase
     {
-        builder.WithShardRegion<TImplementation>($"{role}-{name}",
+        builder.WithShardRegion<TImplementation>(CreateActorName(name, role),
         (_, _, dependecyResolver) => entityId => dependecyResolver.Props<TImplementation>(entityId),
         new MessageExtractor(settings.MaxShards),
         new()
@@ -100,8 +102,8 @@ public static class AkkaServiceCollectionExtensions
 
     internal static AkkaConfigurationBuilder AddSingletonService<TImplementation>(this AkkaConfigurationBuilder builder, string name, string role, SingletonSettings settings, params object[] args) where TImplementation : ActorBase
     {
-        builder.WithSingleton<TImplementation>(name,
-        (_, _, dependecyResolver) => dependecyResolver.Props<TImplementation>(),
+        builder.WithSingleton<TImplementation>(CreateActorName(name, role),
+        (_, _, dependecyResolver) => dependecyResolver.Props<TImplementation>(args),
         new ClusterSingletonOptions()
         {
             Role = role,
@@ -118,7 +120,7 @@ public static class AkkaServiceCollectionExtensions
     {
         builder.WithActors((system, registry) =>
         {
-            var actor = system.ResolveActor<TImplementation>($"{role}-{name}");
+            var actor = system.ResolveActor<TImplementation>(CreateActorName(name, role), args);
             registry.Register<TImplementation>(actor);
         });
 
@@ -161,13 +163,14 @@ public static class AkkaServiceCollectionExtensions
     }
 
     internal static void WithShardRegionProxyWrap<T>(AkkaConfigurationBuilder builder, string name, string role, IMessageExtractor extractor)
-        => builder.WithShardRegionProxy<T>(name, role, extractor);
+        => builder.WithShardRegionProxy<T>(CreateActorName(name, role), role, extractor);
 
     internal static void WithSingletonProxyWrap<T>(AkkaConfigurationBuilder builder, string name, string role)
         => builder.WithActors((system, registry) =>
         {
-            var singletonProxySettings = ClusterSingletonProxySettings.Create(system).WithSingletonName(name).WithRole(role);
-            var singletonProxyProps = ClusterSingletonProxy.Props($"/user/{name}", singletonProxySettings);
-            registry.Register<T>(system.ActorOf(singletonProxyProps, $"{name}-proxy"));
+            var actorName = CreateActorName(name, role);
+            var singletonProxySettings = ClusterSingletonProxySettings.Create(system).WithSingletonName(actorName).WithRole(role);
+            var singletonProxyProps = ClusterSingletonProxy.Props($"/user/{actorName}", singletonProxySettings);
+            registry.Register<T>(system.ActorOf(singletonProxyProps, $"{actorName}-proxy"));
         });
 }
