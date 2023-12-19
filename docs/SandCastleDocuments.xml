@@ -235,6 +235,38 @@
             <summary>
             </summary>
         </member>
+        <member name="T:FicktEuchAllee.Core.MqttConfiguration">
+            <summary>
+            </summary>
+            <param name="host"></param>
+            <param name="port"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttConfiguration.#ctor(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="host"></param>
+            <param name="port"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+        <member name="P:FicktEuchAllee.Core.MqttConfiguration.Host">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.MqttConfiguration.Port">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.MqttConfiguration.Username">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.MqttConfiguration.Password">
+            <summary>
+            </summary>
+        </member>
         <member name="T:FicktEuchAllee.Core.Segment">
             <summary>
             </summary>
