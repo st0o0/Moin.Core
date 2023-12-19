@@ -4,23 +4,46 @@
         <name>FicktEuchAllee.Core</name>
     </assembly>
     <members>
-        <member name="T:FicktEuchAllee.Core.IEndpoint`1">
+        <member name="T:FicktEuchAllee.Core.AkkaServiceCollectionExtensions">
             <summary>
             </summary>
         </member>
-        <member name="P:FicktEuchAllee.Core.IEndpoint`1.Name">
+        <member name="M:FicktEuchAllee.Core.AkkaServiceCollectionExtensions.AddClientEndpoint(Akka.Hosting.AkkaConfigurationBuilder,FicktEuchAllee.Core.IEndpoint)">
+            <summary>
+            </summary>
+            <param name="builder"></param>
+            <param name="endpoint"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:FicktEuchAllee.Core.AkkaServiceCollectionExtensions.AddServiceEndpoint``1(Akka.Hosting.AkkaConfigurationBuilder,FicktEuchAllee.Core.IEndpoint,FicktEuchAllee.Core.ISettings,System.Object[])">
+            <summary>
+            </summary>
+            <typeparam name="TImplementation"></typeparam>
+            <param name="builder"></param>
+            <param name="endpoint"></param>
+            <param name="settings"></param>
+            <param name="args"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:FicktEuchAllee.Core.IEndpoint">
             <summary>
             </summary>
         </member>
-        <member name="P:FicktEuchAllee.Core.IEndpoint`1.Role">
+        <member name="P:FicktEuchAllee.Core.IEndpoint.Name">
             <summary>
             </summary>
         </member>
-        <member name="P:FicktEuchAllee.Core.IEndpoint`1.EndpointType">
+        <member name="P:FicktEuchAllee.Core.IEndpoint.Role">
             <summary>
             </summary>
         </member>
-        <member name="P:FicktEuchAllee.Core.IEndpoint`1.Type">
+        <member name="P:FicktEuchAllee.Core.IEndpoint.EndpointType">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.IEndpoint.Type">
             <summary>
             </summary>
         </member>
@@ -61,6 +84,50 @@
             </summary>
         </member>
         <member name="F:FicktEuchAllee.Core.EndpointType.BroadcastRouter">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.ISettings">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.ShardSettings">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.ShardSettings.MaxShards">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.ShardSettings.ShouldPassivateIdleEntities">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.ShardSettings.PassivateIdleEntityAfter">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.ShardSettings.JournalOptions">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.ShardSettings.SnapshotOptions">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.SingletonSettings">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.SingletonSettings.BufferSize">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.SingletonSettings.LeaseImplementation">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:FicktEuchAllee.Core.SingletonSettings.LeaseRetryInterval">
             <summary>
             </summary>
         </member>
