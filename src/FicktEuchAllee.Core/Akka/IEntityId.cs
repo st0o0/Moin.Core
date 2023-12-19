@@ -1,6 +1,10 @@
 ﻿namespace FicktEuchAllee.Core;
 
-public interface IShardId
+/// <summary>
+/// </summary>
+public interface IEntityId
 {
+    /// <summary>
+    /// </summary>
     string Id { get; }
 }
