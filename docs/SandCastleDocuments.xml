@@ -322,5 +322,92 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="T:FicktEuchAllee.Core.StringExtensions">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.StringExtensions.ToSegments(System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FicktEuchAllee.Core.IMqttMessage">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:FicktEuchAllee.Core.MqttSubscription">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscription.#ctor(System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+        </member>
+        <member name="P:FicktEuchAllee.Core.MqttSubscription.Topic">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscription.ExecuteIfMatch(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FicktEuchAllee.Core.MqttSubscription`1">
+            <summary>
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+            <param name="topic"></param>
+            <param name="callback"></param>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscription`1.#ctor(System.String,System.Func{`0,System.Collections.Generic.IEnumerable{System.String},System.Threading.Tasks.Task})">
+            <summary>
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+            <param name="topic"></param>
+            <param name="callback"></param>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscription`1.ExecuteIfMatch(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FicktEuchAllee.Core.MqttSubscriptionHandler">
+            <summary>
+            </summary>
+            <param name="subscribe"></param>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscriptionHandler.#ctor(FicktEuchAllee.Core.Subscribe)">
+            <summary>
+            </summary>
+            <param name="subscribe"></param>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscriptionHandler.HasTopicSubscribed(System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscriptionHandler.HandleMessageAsync(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FicktEuchAllee.Core.MqttSubscriptionHandler.CreateSubscription``1(System.String,System.Func{``0,System.Collections.Generic.IEnumerable{System.String},System.Threading.Tasks.Task})">
+            <summary>
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+            <param name="topic"></param>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
