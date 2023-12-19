@@ -1,6 +1,6 @@
 ﻿using Akka.Cluster.Sharding;
 
-namespace FicktEuchAllee.Core;
+namespace Moin.Core;
 
 /// <summary>
 /// 

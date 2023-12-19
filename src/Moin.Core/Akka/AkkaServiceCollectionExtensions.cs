@@ -5,11 +5,10 @@ using Akka.Cluster.Routing;
 using Akka.Cluster.Sharding;
 using Akka.Cluster.Tools.Singleton;
 using Akka.DependencyInjection;
-using Akka.Dispatch.SysMsg;
 using Akka.Hosting;
 using Akka.Routing;
 
-namespace FicktEuchAllee.Core;
+namespace Moin.Core;
 
 /// <summary>
 /// </summary>

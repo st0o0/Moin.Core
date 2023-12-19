@@ -1,4 +1,4 @@
-﻿namespace FicktEuchAllee.Core;
+﻿namespace Moin.Core;
 
 internal record MergeSegment(Segment? ATS, Segment? TS);
 

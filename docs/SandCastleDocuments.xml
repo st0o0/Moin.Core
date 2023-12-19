@@ -1,0 +1,413 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Moin.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Moin.Core.AkkaServiceCollectionExtensions">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.AkkaServiceCollectionExtensions.AddClientEndpoint(Akka.Hosting.AkkaConfigurationBuilder,Moin.Core.IEndpoint)">
+            <summary>
+            </summary>
+            <param name="builder"></param>
+            <param name="endpoint"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Moin.Core.AkkaServiceCollectionExtensions.AddServiceEndpoint``1(Akka.Hosting.AkkaConfigurationBuilder,Moin.Core.IEndpoint,Moin.Core.ISettings,System.Object[])">
+            <summary>
+            </summary>
+            <typeparam name="TImplementation"></typeparam>
+            <param name="builder"></param>
+            <param name="endpoint"></param>
+            <param name="settings"></param>
+            <param name="args"></param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Moin.Core.IEndpoint">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.IEndpoint.Name">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.IEndpoint.Role">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.IEndpoint.EndpointType">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.IEndpoint.Type">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.Endpoint`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.Endpoint`1.#ctor(System.String,System.String,Moin.Core.EndpointType)">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.Endpoint`1.Type">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.EndpointBuilder">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.EndpointBuilder.Create``1(System.String,System.String,Moin.Core.EndpointType)">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.EndpointType">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Moin.Core.EndpointType.Shard">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Moin.Core.EndpointType.Singleton">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Moin.Core.EndpointType.ClusterRouter">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Moin.Core.EndpointType.BroadcastRouter">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.IEntityId">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.IEntityId.Id">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.ISettings">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.ShardSettings">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.ShardSettings.MaxShards">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.ShardSettings.ShouldPassivateIdleEntities">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.ShardSettings.PassivateIdleEntityAfter">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.ShardSettings.JournalOptions">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.ShardSettings.SnapshotOptions">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.SingletonSettings">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.SingletonSettings.BufferSize">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.SingletonSettings.LeaseImplementation">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.SingletonSettings.LeaseRetryInterval">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.MessageExtractor">
+            <summary>
+            
+            </summary>
+            <param name="maxShards"></param>
+        </member>
+        <member name="M:Moin.Core.MessageExtractor.#ctor(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="maxShards"></param>
+        </member>
+        <member name="M:Moin.Core.MessageExtractor.EntityId(System.Object)">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.CustomMqttClient">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.CustomMqttClient.#ctor(Moin.Core.MqttConfiguration)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.CustomMqttClient.StartAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.CustomMqttClient.StopAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.CustomMqttClient.Publish``1(System.String,``0)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.CustomMqttClient.Subscribe``1(Moin.Core.MqttTopicConfig{``0},Moin.Core.MqttMessageProcessingHandler{``0})">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.MqttMessageProcessingHandler`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.Subscribe">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.ICustomMqttClient">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.ICustomMqttClient.StartAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.ICustomMqttClient.StopAsync">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.ICustomMqttClient.Publish``1(System.String,``0)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.ICustomMqttClient.Subscribe``1(Moin.Core.MqttTopicConfig{``0},Moin.Core.MqttMessageProcessingHandler{``0})">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.MqttTopicConfig`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.MqttTopicConfig`1.#ctor(System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.MqttTopicConfig`1.Topic">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.Matcher">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Moin.Core.Matcher.SegmentSeperator">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.Matcher.Match(System.String,System.String,System.Collections.Generic.List{System.String}@)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.Matcher.Match(System.Collections.Generic.List{Moin.Core.Segment},System.Collections.Generic.List{Moin.Core.Segment},System.Collections.Generic.List{System.String}@)">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.MqttConfiguration">
+            <summary>
+            </summary>
+            <param name="host"></param>
+            <param name="port"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+        <member name="M:Moin.Core.MqttConfiguration.#ctor(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="host"></param>
+            <param name="port"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+        <member name="P:Moin.Core.MqttConfiguration.Host">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.MqttConfiguration.Port">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.MqttConfiguration.Username">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.MqttConfiguration.Password">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.Segment">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.Segment.#ctor(System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.Segment.Content">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.Segment.IsSingleWildcard">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.Segment.IsMultiWildcard">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Moin.Core.Segment.IsSYS">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.Segment.op_Equality(Moin.Core.Segment,Moin.Core.Segment)">
+            <summary>
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Moin.Core.Segment.op_Inequality(Moin.Core.Segment,Moin.Core.Segment)">
+            <summary>
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Moin.Core.Segment.Equals(Moin.Core.Segment)">
+            <summary>
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Moin.Core.Segment.GetHashCode">
+            <summary>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Moin.Core.Segment.Equals(System.Object)">
+            <summary>
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Moin.Core.StringExtensions">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.StringExtensions.ToSegments(System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Moin.Core.IMqttMessage">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Moin.Core.MqttSubscription">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+        </member>
+        <member name="M:Moin.Core.MqttSubscription.#ctor(System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+        </member>
+        <member name="P:Moin.Core.MqttSubscription.Topic">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Moin.Core.MqttSubscription.ExecuteIfMatch(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Moin.Core.MqttSubscription`1">
+            <summary>
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+            <param name="topic"></param>
+            <param name="callback"></param>
+        </member>
+        <member name="M:Moin.Core.MqttSubscription`1.#ctor(System.String,System.Func{`0,System.Collections.Generic.IEnumerable{System.String},System.Threading.Tasks.Task})">
+            <summary>
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+            <param name="topic"></param>
+            <param name="callback"></param>
+        </member>
+        <member name="M:Moin.Core.MqttSubscription`1.ExecuteIfMatch(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Moin.Core.MqttSubscriptionHandler">
+            <summary>
+            </summary>
+            <param name="subscribe"></param>
+        </member>
+        <member name="M:Moin.Core.MqttSubscriptionHandler.#ctor(Moin.Core.Subscribe)">
+            <summary>
+            </summary>
+            <param name="subscribe"></param>
+        </member>
+        <member name="M:Moin.Core.MqttSubscriptionHandler.HasTopicSubscribed(System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Moin.Core.MqttSubscriptionHandler.HandleMessageAsync(System.String,System.String)">
+            <summary>
+            </summary>
+            <param name="topic"></param>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Moin.Core.MqttSubscriptionHandler.CreateSubscription``1(System.String,System.Func{``0,System.Collections.Generic.IEnumerable{System.String},System.Threading.Tasks.Task})">
+            <summary>
+            </summary>
+            <typeparam name="TMessage"></typeparam>
+            <param name="topic"></param>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

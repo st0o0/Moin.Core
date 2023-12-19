@@ -1,4 +1,4 @@
-﻿namespace FicktEuchAllee.Core;
+﻿namespace Moin.Core;
 
 /// <summary>
 /// </summary>
