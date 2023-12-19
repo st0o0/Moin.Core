@@ -49,5 +49,5 @@ public readonly struct Segment(string segment) : IEquatable<Segment>
     /// </summary>
     /// <param name="obj"></param>
     /// <returns></returns>
-    public override bool Equals(object obj) => obj is Segment value && Equals(value);
+    public override bool Equals(object? obj) => obj is not null && obj is Segment value && Equals(value);
 }
