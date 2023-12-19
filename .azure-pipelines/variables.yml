@@ -1,0 +1,15 @@
+variables:
+  - name: netSdkVersion
+    value: 8.0.x
+  - name: netIncludePreview
+    value: false
+  - name: buildConfiguration
+    value: Release
+  - name: vmImage
+    value: ubuntu-latest
+  - name: solutionPath
+    value: src/Moin.sln
+  - name: projectPath
+    value: src/Moin.Core/Moin.Core.csproj
+  - name: internalFeedName
+    value: Moin.Core/Moin.Core
