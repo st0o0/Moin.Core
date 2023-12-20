@@ -6,5 +6,5 @@ public interface IEntityId
 {
     /// <summary>
     /// </summary>
-    string Id { get; }
+    string EntityId { get; }
 }
