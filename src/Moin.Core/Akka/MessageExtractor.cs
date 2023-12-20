@@ -11,5 +11,5 @@ public class MessageExtractor(int maxShards = 50) : HashCodeMessageExtractor(max
     /// <summary>
     /// </summary>
     public override string EntityId(object message)
-        => message is IEntityId ntt ? ntt.Id : throw new InvalidOperationException("no entityId");
+        => message is IEntityId ntt ? ntt.EntityId : throw new InvalidOperationException("no entityId");
 }
