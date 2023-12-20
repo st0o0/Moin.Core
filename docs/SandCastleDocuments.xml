@@ -91,7 +91,7 @@
             <summary>
             </summary>
         </member>
-        <member name="P:Moin.Core.IEntityId.Id">
+        <member name="P:Moin.Core.IEntityId.EntityId">
             <summary>
             </summary>
         </member>
